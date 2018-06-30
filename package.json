@@ -1,0 +1,11 @@
+{
+  "name": "hypercore-accounting",
+  "version": "1.0.0",
+  "description": "A double-entry book keeping software which uses hypercore.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "suthar.ashok@outlook.com <Ashok Suthar>",
+  "license": "MIT"
+}
