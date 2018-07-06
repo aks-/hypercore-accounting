@@ -3,7 +3,7 @@ import ListAccounts from '../components/list-accounts'
 
 const mapStateToProps = state => ({
   screen: state.screen,
-  accounts: state.accounts
+  accounts: state.accounts.map(account => account.name)
 })
 
 const ListAccountsContainer = connect(

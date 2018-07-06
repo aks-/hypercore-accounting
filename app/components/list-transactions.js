@@ -19,19 +19,17 @@ const Center = styled.p`
   text-align: center;
 `
 
-const ListAccounts = ({ screen, accounts }) => {
-  if (screen !== 'accounts')
+const ListTransactions = ({ screen, transactions }) => {
+  if (screen !== 'transactions')
     return <Fragment></Fragment>
 
-  if (accounts.length === 0)
-    return <Center>There are no accounts right now.</Center>
+  if (transactions.length === 0)
+    return <Center>There are no transactions right now.</Center>
 
   return (
     <Container>
-      {accounts.map(
-        account => <List key={account}>{JSON.stringify(account)}</List>
-      )}
+      {transactions.map(transaction => <List key={transaction.id}>{JSON.stringify(transaction)}</List>)}
     </Container>)
 }
 
-export default ListAccounts
+export default ListTransactions

@@ -2,7 +2,8 @@ const defaultState = {
   screen: 'home',
   notification: null ,
   notificationType: null,
-  accounts: []
+  accounts: [],
+  transactions: []
 }
 
 const accountingApp = (state = defaultState, action) => {
@@ -33,12 +34,12 @@ const accountingApp = (state = defaultState, action) => {
     case 'ADD_ACCOUNT':
       return {
         ...state,
-        accounts: state.accounts.concat([{
-          id: action.id,
-          name: action.name,
-          meta: action.meta,
-          date: action.date
-        }])
+        accounts: state.accounts.concat([action.accountLog])
+      }
+    case 'ADD_TRANSACTION':
+      return {
+        ...state,
+        transactions: state.transactions.concat([action.transactionLog])
       }
     default:
       return state

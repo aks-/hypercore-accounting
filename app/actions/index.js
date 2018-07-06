@@ -3,6 +3,7 @@ import { ipcRenderer as ipc, remote } from 'electron'
 const makeTransaction = remote.require('./lib/makeTransaction')
 const createAccount = remote.require('./lib/createAccount')
 const getAccounts = remote.require('./lib/getAccounts')
+const getTransactions = remote.require('./lib/getTransactions')
 
 export const onTabClick = screen => ({ type: 'SHOW_SCREEN', screen })
 
@@ -29,7 +30,13 @@ export const addTransaction = transaction => async dispatch => {
       amount
     } = transaction
 
-    await makeTransaction(Date.now(), desc, debitAccount, creditAccount, amount)
+    const transactionLogs = await makeTransaction(Date.now(), desc, debitAccount, creditAccount, amount)
+    transactionLogs.forEach(transactionLog => {
+      dispatch({
+        type: 'ADD_TRANSACTION',
+        transactionLog
+      })
+    })
     flashSuccess('Successfully added transaction.')(dispatch)
   } catch (e) {
     flashError(e.message)(dispatch)
@@ -43,7 +50,7 @@ export const addAccount = account => async dispatch => {
     const accountLog = await createAccount(Date.now, name, { type })
     dispatch({
       type: 'ADD_ACCOUNT',
-      ...accountLog
+      accountLog
     })
     flashSuccess('Successfully added account.')(dispatch)
   } catch (e) {
@@ -52,15 +59,24 @@ export const addAccount = account => async dispatch => {
 }
 
 export const loadAccounts = () => async dispatch => {
-  var accounts = []
+  var accountLogs = []
+  var transactionLogs = []
   try {
-    accounts = await getAccounts()
+    accountLogs = await getAccounts()
+    transactionLogs = await getTransactions()
   } catch (_) {}
 
-  accounts.forEach(account => {
+  accountLogs.forEach(accountLog => {
     dispatch({
       type: 'ADD_ACCOUNT',
-      ...account
+      accountLog
+    })
+  })
+
+  transactionLogs.forEach(transactionLog => {
+    dispatch({
+      type: 'ADD_TRANSACTION',
+      transactionLog
     })
   })
 }
