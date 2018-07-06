@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import { neutral } from 'dat-colors'
 import serialize from 'form-serialize'
 import { Green as GreenButton, Disabled as DisabledButton } from './buttons'
 
@@ -12,7 +11,8 @@ const Form = styled.form`
   width: 80%;
 `
 
-const AddTransaction = ({ accounts, notification, flashError, addTransaction }) => {
+const AddTransaction = ({ screen, accounts, notification, flashError, addTransaction }) => {
+  if (screen !== 'home') return <Fragment></Fragment>
 
   const validateInputs = inputs => {
     const { amount, debitAccount, creditAccount } = inputs
@@ -50,28 +50,28 @@ const AddTransaction = ({ accounts, notification, flashError, addTransaction }) 
 
   return (
     <Form onSubmit={submitForm}>
-      <label>Debit Account</label>
+      <label>DEBIT ACCOUNT</label>
       <select name="debitAccount" required>
         <option value> -- select debit account -- </option>
         {options}
       </select>
 
-      <label>Credit Account</label>
+      <label>CREDIT ACCOUNT</label>
       <select name="creditAccount" required>
         <option value> -- select credit account -- </option>
         {options}
       </select>
 
-      <label>Description</label>
+      <label>DESCRIPTION</label>
       <input name="desc" type="text" placeholder="description" required/>
 
-      <label>Amount</label>
+      <label>AMOUNT</label>
       <input name="amount" type="text" placeholder="amount" required/>
 
       {
         notification ? 
-          <DisabledButton type="submit">Add Transaction</DisabledButton> :
-          <GreenButton type="submit">Add Transaction</GreenButton>
+          <DisabledButton type="submit">ADD TRANSACTION</DisabledButton> :
+          <GreenButton type="submit">ADD TRANSACTION</GreenButton>
       }
     </Form>
   )
