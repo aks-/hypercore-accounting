@@ -6,7 +6,8 @@
         "browsers": "last 5 versions"
       },
       "loose": true,
-      "modules": false,
-    }]
+      "modules": false
+    }],
+    "stage-2"
   ]
 }

@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
+import HeaderContainer from '../containers/header'
 
 const App = () => (
-  <div>
-    Hypercore Accounting
-  </div>
+  <Fragment>
+    <HeaderContainer />
+  </Fragment>
 )
 
 export default App
