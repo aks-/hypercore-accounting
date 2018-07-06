@@ -1,5 +1,3 @@
-'use strict'
-
 import React from 'react'
 import styled from 'styled-components'
 
@@ -28,7 +26,14 @@ const HeaderButton = BaseButton.extend`
   }
 `
 
-var PlainButton = BaseButton.extend`
+const DisabledButton = BaseButton.extend`
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  background-color: var(--color-neutral-10);
+  color: var(--color-neutral-40);
+`
+
+const PlainButton = BaseButton.extend`
   padding: 0.5rem 0.75rem;
   font-size: 0.75rem;
   background-color: transparent;
@@ -39,7 +44,7 @@ var PlainButton = BaseButton.extend`
   }
 `
 
-var GreenButton = BaseButton.extend`
+const GreenButton = BaseButton.extend`
   padding: 0.5rem 0.75rem;
   font-size: 0.75rem;
   background-color: var(--color-green);
@@ -51,7 +56,7 @@ var GreenButton = BaseButton.extend`
   }
 `
 
-var RedButton = BaseButton.extend`
+const RedButton = BaseButton.extend`
   padding: 0.5rem 0.75rem;
   font-size: 0.75rem;
   background-color: var(--color-red);
@@ -87,6 +92,12 @@ export const Plain = ({ children, ...props }) => (
   <PlainButton {...props}>
     <InnerWrapperComponent>{children}</InnerWrapperComponent>
   </PlainButton>
+)
+
+export const Disabled = ({ children, ...props }) => (
+  <DisabledButton {...props}>
+    <InnerWrapperComponent>{children}</InnerWrapperComponent>
+  </DisabledButton>
 )
 
 export const Green = ({ children, icon, ...props }) => (

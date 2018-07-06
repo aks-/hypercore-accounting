@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   context: __dirname,
-  entry: './app/index.js',
+  entry: ['babel-polyfill', './app/index.js'],
   devtool: 'cheap-eval-source-map',
   target: 'electron-main',
   output: {

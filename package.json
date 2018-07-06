@@ -11,7 +11,9 @@
   "author": "suthar.ashok@outlook.com <Ashok Suthar>",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "dat-colors": "^3.5.1",
+    "form-serialize": "^0.7.2",
     "hypercore": "^6.17.1",
     "os": "^0.1.1",
     "react": "^16.4.1",

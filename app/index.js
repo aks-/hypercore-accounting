@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import accountingApp from './reducers'
+import { loadAccounts } from './actions'
 import App from './components/app'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
@@ -18,3 +19,5 @@ render(
   </Provider>,
   document.querySelector('div')
 )
+
+store.dispatch(loadAccounts())
