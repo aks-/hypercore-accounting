@@ -15,6 +15,8 @@
     "dat-colors": "^3.5.1",
     "form-serialize": "^0.7.2",
     "hypercore": "^6.17.1",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.21",
     "os": "^0.1.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

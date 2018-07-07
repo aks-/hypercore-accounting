@@ -27,7 +27,7 @@ const ListAccounts = ({ screen, accounts }) => {
   if (accounts.length === 0)
     return <Center>There are no accounts right now.</Center>
 
-  const columns = ['Name', 'Type']
+  const columns = ['Name', 'Type', 'Date', 'Timezone']
   const data = accounts.map(obj => Object.values(obj).slice(1))
   return (
     <Table columns={columns} data={data} />
