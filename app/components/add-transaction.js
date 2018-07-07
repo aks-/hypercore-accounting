@@ -11,6 +11,12 @@ const Form = styled.form`
   width: 80%;
 `
 
+const FormElement = styled.div`
+  display: flex;
+  margin-bottom: 0.5rem;
+  flex-direction: column;
+`
+
 const AddTransaction = ({ screen, accounts, notification, flashError, addTransaction }) => {
   if (screen !== 'home') return <Fragment></Fragment>
 
@@ -50,29 +56,39 @@ const AddTransaction = ({ screen, accounts, notification, flashError, addTransac
 
   return (
     <Form onSubmit={submitForm}>
-      <label>DEBIT ACCOUNT</label>
-      <select name="debitAccount" required>
-        <option value> -- select debit account -- </option>
-        {options}
-      </select>
+      <FormElement>
+        <label>DEBIT ACCOUNT</label>
+        <select name="debitAccount" required>
+          <option value> -- select debit account -- </option>
+          {options}
+        </select>
+      </FormElement>
 
-      <label>CREDIT ACCOUNT</label>
-      <select name="creditAccount" required>
-        <option value> -- select credit account -- </option>
-        {options}
-      </select>
+      <FormElement>
+        <label>CREDIT ACCOUNT</label>
+        <select name="creditAccount" required>
+          <option value> -- select credit account -- </option>
+          {options}
+        </select>
+      </FormElement>
 
-      <label>DESCRIPTION</label>
-      <input name="desc" type="text" placeholder="description" required/>
+      <FormElement>
+        <label>DESCRIPTION</label>
+        <input name="desc" type="text" placeholder="description" required/>
+      </FormElement>
 
-      <label>AMOUNT</label>
-      <input name="amount" type="text" placeholder="amount" required/>
+      <FormElement>
+        <label>AMOUNT</label>
+        <input name="amount" type="text" placeholder="amount" required/>
+      </FormElement>
 
-      {
-        notification ? 
-          <DisabledButton type="submit">ADD TRANSACTION</DisabledButton> :
-          <GreenButton type="submit">ADD TRANSACTION</GreenButton>
-      }
+      <FormElement>
+        {
+          notification ? 
+            <DisabledButton type="submit">ADD TRANSACTION</DisabledButton> :
+            <GreenButton type="submit">ADD TRANSACTION</GreenButton>
+        }
+      </FormElement>
     </Form>
   )
 }
