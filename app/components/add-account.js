@@ -11,6 +11,12 @@ const Form = styled.form`
   width: 80%;
 `
 
+const FormElement = styled.div`
+  display: flex;
+  margin-bottom: 0.5rem;
+  flex-direction: column;
+`
+
 const accountTypes = ['Income', 'Expense', 'Asset', 'Liability']
 
 const AddAccount = ({ screen, notification, flashError, addAccount }) => {
@@ -37,20 +43,26 @@ const AddAccount = ({ screen, notification, flashError, addAccount }) => {
 
   return (
     <Form onSubmit={submitForm}>
-      <label>ACCOUNT NAME</label>
-      <input name="name" type="text" placeholder="Name" required/>
+      <FormElement>
+        <label>ACCOUNT NAME</label>
+        <input name="name" type="text" placeholder="Name" required/>
+      </FormElement>
 
-      <label>ACCOUNT TYPE</label>
-      <select name="type" required>
-        <option value> -- select account type -- </option>
-        {options}
-      </select>
+      <FormElement>
+        <label>ACCOUNT TYPE</label>
+        <select name="type" required>
+          <option value> -- select account type -- </option>
+          {options}
+        </select>
+      </FormElement>
 
-      {
-        notification ? 
-          <DisabledButton type="submit">ADD ACCOUNT</DisabledButton> :
-          <GreenButton type="submit">ADD ACCOUNT</GreenButton>
-      }
+      <FormElement>
+        {
+          notification ? 
+            <DisabledButton type="submit">ADD ACCOUNT</DisabledButton> :
+            <GreenButton type="submit">ADD ACCOUNT</GreenButton>
+        }
+      </FormElement>
     </Form>
   )
 }

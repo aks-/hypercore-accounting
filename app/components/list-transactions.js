@@ -1,12 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-
-const Container = styled.ul`
-  background-color: var(--color-neutral-10);
-  color: var(--color-neutral-40);
-  margin: 0.75rem;
-  text-align: center;
-`
+import Table from './table'
 
 const List = styled.li`
   padding: 0.5rem;
@@ -26,10 +20,9 @@ const ListTransactions = ({ screen, transactions }) => {
   if (transactions.length === 0)
     return <Center>There are no transactions right now.</Center>
 
-  return (
-    <Container>
-      {transactions.map(transaction => <List key={transaction.id}>{JSON.stringify(transaction)}</List>)}
-    </Container>)
+  const columns = ['Date', 'Description', 'Debit', 'Credit', 'Account Name']
+  const data = transactions.map(obj => Object.values(obj).slice(1))
+  return <Table columns={columns} data={data}></Table>
 }
 
 export default ListTransactions

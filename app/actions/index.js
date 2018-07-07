@@ -47,7 +47,7 @@ export const addAccount = account => async dispatch => {
   try {
     const { name, type } = account
 
-    const accountLog = await createAccount(Date.now, name, { type })
+    const accountLog = await createAccount(Date.now, name, type)
     dispatch({
       type: 'ADD_ACCOUNT',
       accountLog

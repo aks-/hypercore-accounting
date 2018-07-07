@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
+import Table from './table'
 
 const Container = styled.ul`
   background-color: var(--color-neutral-10);
@@ -26,12 +27,11 @@ const ListAccounts = ({ screen, accounts }) => {
   if (accounts.length === 0)
     return <Center>There are no accounts right now.</Center>
 
+  const columns = ['Name', 'Type']
+  const data = accounts.map(obj => Object.values(obj).slice(1))
   return (
-    <Container>
-      {accounts.map(
-        account => <List key={account}>{JSON.stringify(account)}</List>
-      )}
-    </Container>)
+    <Table columns={columns} data={data} />
+  )
 }
 
 export default ListAccounts
